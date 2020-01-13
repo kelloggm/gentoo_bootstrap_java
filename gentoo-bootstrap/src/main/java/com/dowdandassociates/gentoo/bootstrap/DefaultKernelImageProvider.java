@@ -32,6 +32,8 @@ import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.checkerframework.checker.objectconstruction.qual.CalledMethodsPredicate;
+
 public class DefaultKernelImageProvider extends LatestImageProvider
 {
     private static Logger log = LoggerFactory.getLogger(DefaultKernelImageProvider.class);
@@ -46,7 +48,7 @@ public class DefaultKernelImageProvider extends LatestImageProvider
     }
 
     @Override
-    protected DescribeImagesRequest getRequest()
+    protected @CalledMethodsPredicate("(withOwners || setOwners) || (withImageIds || setImageIds) || (withExecutableUsers || setExecutableUsers)") DescribeImagesRequest getRequest()
     {
         StringBuilder manifestLocation = new StringBuilder();
         

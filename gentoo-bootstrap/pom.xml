@@ -43,6 +43,12 @@
         </dependency>
 
         <dependency>
+            <groupId>net.sridharan.objectconstruction</groupId>
+            <artifactId>object-construction-qual</artifactId>
+            <version>0.1.6</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>14.0.1</version>

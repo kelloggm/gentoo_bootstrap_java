@@ -41,6 +41,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.checkerframework.checker.objectconstruction.qual.CalledMethodsPredicate;
+
 public abstract class LatestImageProvider implements Provider<Optional<Image>> 
 {
     private static Logger log = LoggerFactory.getLogger(LatestImageProvider.class);
@@ -82,6 +84,6 @@ public abstract class LatestImageProvider implements Provider<Optional<Image>>
         return Optional.fromNullable(imageMap.get(keys[keys.length - 1]));
     }
 
-    protected abstract DescribeImagesRequest getRequest();
+    protected abstract @CalledMethodsPredicate("(withOwners || setOwners) || (withImageIds || setImageIds) || (withExecutableUsers || setExecutableUsers)") DescribeImagesRequest getRequest();
 }
 
